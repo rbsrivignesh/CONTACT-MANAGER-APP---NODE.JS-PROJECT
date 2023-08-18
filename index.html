@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>is this working</h1>
+    <input type="text" id="inp1" placeholder="name">
+
+    <input type="text" id="inp3" placeholder="phone">
+    <button onclick="fet()">submit</button>
+    <script>
+        function fet() {
+            console.log("button working");
+            var Myname = document.getElementById("inp1");
+
+            var Myphone = document.getElementById("inp3");
+            // console.log(_dirname);
+            var obj = {
+                name: Myname.value,
+
+                phone: Myphone.value
+            };
+            console.log(obj);
+            fetch("/api/contacts/send", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/JSON"
+                },
+                body: JSON.stringify(obj)
+            });
+        }
+    </script>
+</body>
+
+</html>
